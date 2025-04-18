@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.util.Properties;
  
 public class Utility {
-	public	String url, username, password,name,discription;
+	public	String url, username, password;
+	public String name,discription;
+	public String unitid,name1,discription1;
 	public String changename;
 	
 	
@@ -33,6 +35,10 @@ public class Utility {
 		password=prop.getProperty("password");
 		name=prop.getProperty("name");
 		discription=prop.getProperty("discription");
+		unitid=prop.getProperty("unitid");
+		name1=prop.getProperty("name1");
+		discription1=prop.getProperty("desc");
+		changename=prop.getProperty("changename");
 
 	}
 }

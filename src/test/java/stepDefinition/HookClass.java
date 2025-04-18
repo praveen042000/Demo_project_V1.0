@@ -12,7 +12,7 @@ import io.cucumber.java.Scenario;
 public class HookClass {
 	@Before
 	public static void setUp() {
-		HelperClass.setUpDriver("edge");
+		HelperClass.setUpDriver("chrome");
 	}
 	
 	@After
