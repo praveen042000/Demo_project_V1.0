@@ -2,6 +2,8 @@ package com.selenium.cucumber.SeleniumCucumberProject;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.support.PageFactory;
@@ -14,7 +16,8 @@ public class SkillActions {
     // Instance variables
     SkillLocators skillloc;
     ExternalFileReader fil = new ExternalFileReader();
-
+    //time formarter
+    
     // Constructor
     public SkillActions() {
         // Initialize SkillLocators using PageFactory
@@ -66,7 +69,7 @@ public class SkillActions {
         System.out.println("Successfully Saved");
     }
 
-    // Method to read data from an Excel sheet
+ // Method to read data from an Excel sheet
     public void excelsheetread(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
         // Get data from the Excel sheet
         List<Map<String, String>> testdata = fil.getData("src/test/resource/Data.xlsx", sheetname);
@@ -74,8 +77,14 @@ public class SkillActions {
         // Get skill and description from the specified row
         String skill = testdata.get(rownumber).get("skill");
         String discription = testdata.get(rownumber).get("discription");
+        
+        // Get current time in minutes and seconds format (mmss)
+        String timeStamp = String.format("%1$tM%1$tS", new java.util.Date());
+        
+        // Append timestamp to skill name
+        String skillWithTime = skill + "_" + timeStamp;
 
-        // Add skill details using the retrieved data
-        addskilldetails(skill, discription);
+        // Add skill details using the retrieved data with timestamp
+        addskilldetails(skillWithTime, discription);
     }
 }
